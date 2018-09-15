@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vtomu.dao.AreaDao">
+  <resultMap id="areaMap" type="Area">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="city_id" jdbcType="INTEGER" property="cityId" />
+  </resultMap>
+  <sql id="area_column_list">
+    id, area_id, name, city_id
+  </sql>
+
+  <select id="listAreaByCityId" resultMap="areaMap" parameterType="Integer">
+    select
+      <include refid="area_column_list" />
+    from area a where a.city_id=#{_parameter}
+  </select>
+
+
+
+</mapper>

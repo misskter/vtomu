@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="vtomu-annotation" />
+        <module name="vtomu-application" />
+        <module name="vtomu-common" />
+        <module name="vtomu-dao" />
+        <module name="vtomu-elasticsearch" />
+        <module name="vtomu-email" />
+        <module name="vtomu-interface" />
+        <module name="vtomu-moblie" />
+        <module name="vtomu-pojo" />
+        <module name="vtomu-quartz" />
+        <module name="vtomu-redis" />
+        <module name="vtomu-service" />
+        <module name="vtomu-springaop" />
+        <module name="vtomu-springsecurity" />
+        <module name="vtomu-web" />
+        <module name="vtomu-websocket" />
+      </profile>
+    </annotationProcessing>
+  </component>
+</project>

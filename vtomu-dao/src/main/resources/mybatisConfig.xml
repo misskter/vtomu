@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+
+	
+	 <settings>
+	 	<setting name="callSettersOnNulls" value="true" />
+		 <setting name="jdbcTypeForNull" value="NULL" />
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+        <setting name="lazyLoadingEnabled" value="true"/>
+    </settings>
+	
+	<typeAliases>
+		<typeAlias type="com.vtomu.pojo.User" alias="User" />
+		<typeAlias type="com.vtomu.pojo.UroleUprivilege" alias="UroleUprivilege" />
+		<typeAlias type="com.vtomu.pojo.Urole" alias="Urole" />
+		<typeAlias type="com.vtomu.pojo.UprivilegeResource" alias="UprivilegeResource" />
+		<typeAlias type="com.vtomu.pojo.Uprivilege" alias="Uprivilege" />
+		<typeAlias type="com.vtomu.pojo.Article" alias="Article" />
+		<typeAlias type="com.vtomu.pojo.Photo" alias="Photo" />
+		<typeAlias type="com.vtomu.pojo.PhotoAlbum" alias="PhotoAlbum" />
+		<typeAlias type="com.vtomu.pojo.Comment" alias="Comment" />
+		<typeAlias type="com.vtomu.pojo.Praise" alias="Praise" />
+		<typeAlias type="com.vtomu.pojo.City" alias="City" />
+		<typeAlias type="com.vtomu.pojo.Province" alias="Province" />
+		<typeAlias type="com.vtomu.pojo.Area" alias="Area" />
+		<typeAlias type="com.vtomu.pojo.FootPoint" alias="FootPoint" />
+		<typeAlias type="com.vtomu.pojo.Scenic" alias="Scenic" />
+
+	</typeAliases>
+	
+	
+	
+	
+</configuration>

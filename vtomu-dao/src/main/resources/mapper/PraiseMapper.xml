@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vtomu.dao.PraiseDao">
+  <resultMap id="praiseMap" type="Praise">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="praise_user_id" jdbcType="INTEGER" property="praiseUserId" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+  </resultMap>
+  <sql id="praise_column_list">
+    id, praise_user_id, article_id
+  </sql>
+
+
+  <select id="listSelectPraiseByArticleId" resultMap="praiseMap">
+    select
+    <include refid="praise_column_list" />
+    from praise pr where 1=1
+    <if test="_parameter!=null and _parameter!=''">
+      and pr.article_id=#{_parameter}
+    </if>
+  </select>
+
+  <insert id="insertPraise" parameterType="Praise" >
+    insert into praise(
+       praise_user_id, article_id
+     )VALUES
+    (#{praiseUserId},#{articleId})
+  </insert>
+
+  <select id="countSelectPraiseByArticleIdAndUserId" parameterType="Praise" resultType="Integer">
+    select count(1) from praise p
+      where p.praise_user_id=#{praiseUserId}
+       and p.article_id=#{articleId}
+  </select>
+
+</mapper>

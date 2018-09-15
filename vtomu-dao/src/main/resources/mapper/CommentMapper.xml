@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vtomu.dao.CommentDao">
+  <resultMap id="commentMap" type="Comment">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="article_id" jdbcType="INTEGER" property="articleId" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+  </resultMap>
+
+  <sql id="comment_column_list">
+    id, article_id, parent_id, content, user_id
+  </sql>
+
+  <select id="selectPhotoByArticleId" resultType="Comment">
+    select * from comment co where 1=1
+    <if test="_parameter!=null and _parameter!=''">
+      and co.article_id=#{_parameter}
+    </if>
+  </select>
+
+
+
+</mapper>

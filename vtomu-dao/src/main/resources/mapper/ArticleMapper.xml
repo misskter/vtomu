@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vtomu.dao.ArticleDao">
+	<resultMap id="articleMap" type="Article">
+		<id column="id" jdbcType="INTEGER" property="id" />
+		<result column="content" jdbcType="VARCHAR" property="content" />
+		<result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+		<result column="user_id" jdbcType="INTEGER" property="userId" />
+		<result column="category" jdbcType="INTEGER" property="category" />
+	</resultMap>
+	<sql id="article_column_list">
+		id, content, create_time, user_id, category
+	</sql>
+	<select id="listArticleListByPage" resultMap="articleMap">
+	select
+	 <include refid="article_column_list" />
+	 from article ar
+	</select>
+	<select id="getSelectOne" resultMap="articleMap" parameterType="Integer">
+		select
+		<include refid="article_column_list" />
+		from article where 1=1
+		<if test="_parameter!=null and _parameter!=''">
+			and id=#{_parameter}
+		</if>
+	</select>
+	<insert id="saveArticle" parameterType="Article">
+		insert into article(content,create_time,user_id) value(#{content},#{createTime},#{user.id})
+	</insert>
+	<select id="listAllArticle" resultMap="articleMap">
+	select
+		<include refid="article_column_list" />
+		from article ar
+	
+	</select>
+	
+	
+	
+</mapper>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vtomu.dao.UprivilegeResourceDao">
+	<select id="selectResourceByUroleId" parameterType="java.lang.Integer"
+		resultType="UprivilegeResource">
+		select upre.*,uro.id as uroleId from uprivilege_resource upre
+		INNER join uprivilege up on upre.uprivilege_id=up.id
+		INNER JOIN urole_uprivilege urup on urup.uprivilege_id=up.id
+		INNER join urole uro on urup.urole_id=uro.id
+		<if test="_parameter!=null and _parameter>0">
+			WHERE uro.id=#{_parameter}
+		</if>
+	</select>
+
+
+
+</mapper>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vtomu.dao.CityDao">
+    <resultMap id="cityMap" type="City">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="city_id" jdbcType="INTEGER" property="cityId"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="province_id" jdbcType="INTEGER" property="provinceId"/>
+    </resultMap>
+
+
+    <sql id="city_column_list">
+    id, city_id, name, province_id
+  </sql>
+
+    <select id="listSelectAllCity" resultMap="cityMap" parameterType="Integer">
+        select
+          <include refid="city_column_list" />
+        from city c where c.province_id=#{_parameter}
+    </select>
+
+
+</mapper>

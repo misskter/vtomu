@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.vtomu.dao.UserDao">
+  <resultMap id="userMap" type="User">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="birthday" jdbcType="TIMESTAMP" property="birthday" />
+    <result column="sex" jdbcType="BIT" property="sex" />
+    <result column="version" jdbcType="TINYINT" property="version" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="head_portrait" jdbcType="VARCHAR" property="headPortrait" />
+    <result column="signature" jdbcType="VARCHAR" property="signature" />
+    <result column="salt" jdbcType="VARCHAR" property="salt" />
+    <result column="channel" jdbcType="VARCHAR" property="channel" />
+    <result column="create_time" jdbcType="TIMESTAMP"  property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="urole_id" jdbcType="INTEGER" property="uroleId" />
+  </resultMap>
+  
+  <!-- 查询全部的时候使用 -->
+  <sql id="user_column_list">
+    id, nickname, password, username, phone, email, birthday, sex, version, address, 
+    head_portrait, signature, salt, urole_id, channel, create_time, update_time
+  </sql>
+
+	<select id="selectUserByUserName" parameterType="String"
+		resultMap="userMap">
+		select 
+ 		<include refid="user_column_list" />
+ 		from user u 
+		<if test="_parameter!=null and _parameter!=''">
+			where u.username=#{_parameter}
+		</if>
+	</select>
+	
+	
+	
+	<insert id="insertUser" parameterType="User">
+		 insert into user (nickname, password, username, 
+      phone, email, birthday, 
+      sex, version, address, 
+      head_portrait, signature, salt, 
+      urole_id, channel, create_time, 
+      update_time)
+    values (#{nickname,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{phone,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, #{birthday,jdbcType=TIMESTAMP}, 
+      #{sex,jdbcType=BIT}, #{version,jdbcType=TINYINT}, #{address,jdbcType=VARCHAR}, 
+      #{headPortrait,jdbcType=VARCHAR}, #{signature,jdbcType=VARCHAR}, #{salt,jdbcType=VARCHAR}, 
+      #{uroleId,jdbcType=INTEGER}, #{channel,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP})
+	</insert>
+	
+	
+	
+	<insert id="inserUserByUserName" parameterType="User">
+		insert into
+		user(username,channel,create_time) 
+		value
+		(#{username},#{channel},#{createTime,jdbcType=TIMESTAMP})
+	</insert>
+	
+	
+	<update id="updateUser" parameterType="User">
+		
+
+	</update>
+
+
+	
+	<select id="getSelectArticleOwnerByUserId" parameterType="int" resultMap="userMap">
+		select id,nickName,head_portrait from user 
+			where id=#{_parameter}
+	</select>
+
+
+
+
+
+
+
+</mapper>

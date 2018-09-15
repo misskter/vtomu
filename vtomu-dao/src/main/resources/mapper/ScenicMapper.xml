@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.vtomu.dao.ScenicDao">
+  <resultMap id="scenicMap" type="Scenic">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="area_id" jdbcType="INTEGER" property="areaId" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+
+  <sql id="scenic_column_list">
+    id, name, address, area_id, description
+  </sql>
+
+<select id="listSelectAllScenic" resultMap="scenicMap">
+  select
+   <include refid="scenic_column_list" />
+   from  scenic
+
+
+</select>
+
+</mapper>
